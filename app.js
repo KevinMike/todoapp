@@ -6,10 +6,12 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var env = process.env.NODE_ENV || 'prod';
-console.log(env);
-var dbConnectionString = (env == 'dev') ? 'mongodb://localhost:27017/Todo' : 'fe';
 
-console.log(dbConnectionString);
+var dbConnectionString = (env === 'env') ?
+    'mongodb://localhost:27017/todoapp' :
+    'mongodb://admin:password2018@ds018258.mlab.com:18258/todoapp';
+
+console.log(env,dbConnectionString);
 
 var connection = mongoose.connect(dbConnectionString);
 
